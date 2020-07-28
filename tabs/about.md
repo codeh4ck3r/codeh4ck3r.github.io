@@ -8,4 +8,5 @@ title: About
 # MIT License
 ---
 
-> **Note**: Add Markdown syntax content to file `tabs/about.md` and it will show up on this page.
+Hi, I’m Sujit Suryawanshi From India Working As Information Security Analyst. I Started This Blog To Share My Knowledge And To Learn More.
+I’m Mainly Focusing On Web Application Pentesting, Android Application Pentesting, HackTheBox, TryHackMe And Other CTFs.

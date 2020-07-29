@@ -1,7 +1,7 @@
 ---
 title: Blunder Writeup - HackTheBox
 author: Sujit Suryawanshi
-date: 2020-04-22 14:10:00 +0800
+date: 2020-07-29 14:10:00 +0800
 categories: [Writeup, HackTheBox]
 tags: [hackthebox, htb, blunder]
 ---

@@ -8,5 +8,5 @@ title: About
 # MIT License
 ---
 
-Hi, I’m Sujit Suryawanshi From India Working As Information Security Analyst. I Started This Blog To Share My Knowledge And To Learn More.
+Hi, I’m Sujit Suryawanshi From India Working As Information Security Analyst. I Started This Blog To Share My Journey in InfoSec, My Knowledge And To Learn More.
 I’m Mainly Focusing On Web Application Pentesting, Android Application Pentesting, HackTheBox, TryHackMe And Other CTFs.

@@ -26,18 +26,18 @@ github:
   username: codeh4ck3r             # change to your github username
 
 twitter:
-  username:             # change to your twitter username
+  username: n008h4ck3r            # change to your twitter username
 
 social:
   name: Sujit Suryawanshi                  # it will shows as the copyright owner in Footer
   email: codeh4ck3r@protonmail.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/      # change to your twitter homepage
+    - https://twitter.com/n008h4ck3r      # change to your twitter homepage
     - https://github.com/codeh4ck3r       # change to your github homepage
-    # Uncomment below to add more social links
-    # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+    - https://www.hackthebox.eu/home/users/profile/123340
+    - https://t.me/N008H4ck3r
+    - https://www.linkedin.com/in/codeh4ck3r
 
 google_site_verification: google_meta_tag_verification # change to your verification string
 

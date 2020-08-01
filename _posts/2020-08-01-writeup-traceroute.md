@@ -9,7 +9,7 @@ tags: [hackthebox, htb, traceback]
 <h2 data-toc-skip>Writeup of Traceback Machine (HackTheBox)</h2>
 
 
-![Desktop View]({{ "/assets/img/traceback-main.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/traceback-main.png" | relative_url }})
 
 Today I did Traceback box from HackTheBox.
 It was nice box, CTF-like box in which the website has been hacked and placed one backdoor shell to access.
@@ -25,7 +25,7 @@ Se lets move and Pwn this box.
 
 #### sudo nmap -sC -sV -T4 10.10.10.181
 
-![Desktop View]({{ "/assets/img/blunder-nmap.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/blunder-nmap.png" | relative_url }})
 
 We used -sC for Default Script, -sV Service Version Scan, -T4 for Timing.
 As you can see there are two ports open that is port 22 and 80. Port 80 hosting web server which has Apache httpd 2.4.29 also the OS was Ubuntu, so we moved towards port 80 for further enumeration.
@@ -34,24 +34,24 @@ As you can see there are two ports open that is port 22 and 80. Port 80 hosting 
 
 After opening the website in browser, There was note from hacker who have defaced the site.
 
-![Desktop View]({{ "/assets/img/traceback-website-defaced.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/traceback-website-defaced.png" | relative_url }})
 
 Continuing to enumeration I checked the page source of website for comments and other juicy information.
 Then I found one comment in HTML page of website.
 
-![Desktop View]({{ "/assets/img/traceback-html-comment.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/traceback-html-comment.png" | relative_url }})
 
 After doing some web fuzzing using names of common backdoor shell, I found there was shell named "smevk.php" <http://10.10.10.181/smevk.php>
 
-![Desktop View]({{ "/assets/img/traceback-ffuf.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/traceback-ffuf.png" | relative_url }})
 
 Visiting above url, Got login page of web shell.
 
-![Desktop View]({{ "/assets/img/traceback-shell.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/traceback-shell.png" | relative_url }})
 
 I used default credentials as admin:admin to login into shell.
 
-![Desktop View]({{ "/assets/img/traceback-shell-login.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/traceback-shell-login.png" | relative_url }})
 
 So here we got the access to backdoor shell and it's time to get full interactive shell.
 Moving forward, I did some google for getting tty shell and got a tty shell using perl command given below.
@@ -66,28 +66,28 @@ Basically what this command does here -qc is script flag and -c means running a 
 
 Moving further, I found that machine has two users that is webadmin and sysadmin.
 
-![Desktop View]({{ "/assets/img/traceback-users-list.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/traceback-users-list.png" | relative_url }})
 
 As I had access of .ssh of folder I added my system's key in authorized_keys file so that I'll get access of this system using ssh.
 
-![Desktop View]({{ "/assets/img/traceback-ssh-keys.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/traceback-ssh-keys.png" | relative_url }})
 
 After doing login by ssh I saw a weird message printed on screen.
 
-![Desktop View]({{ "/assets/img/traceback-ssh-login.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/traceback-ssh-login.png" | relative_url }})
 
 Anyway lets move further for sysadmin user.
 While enumerating more, I found note.txt which contains,
 
-![Desktop View]({{ "/assets/img/traceback-sysadmin-note.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/traceback-sysadmin-note.png" | relative_url }})
 
 Checking sudo -l, I got that luvit was allowed to run as sudo with sysadmin user.
 
-![Desktop View]({{ "/assets/img/traceback-luvit.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/traceback-luvit.png" | relative_url }})
 
 So for Privilege Escalation and User flag I ran luvit with sudo and executed "/bin/bash" which gave me sysadmin.
 
-![Desktop View]({{ "/assets/img/traceback-sysadmin-user.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/traceback-sysadmin-user.png" | relative_url }})
 
 Next part in Privilege Escalation for root.
 So while enumerating for root, I saw one odd service like,
@@ -98,16 +98,16 @@ After checking out both directories which are given in above service, I found wr
 
 So this file was executing and printing some text on login of SSH.
 
-![Desktop View]({{ "/assets/img/traceback-00-header.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/traceback-00-header.png" | relative_url }})
 
 Also the file was writable by sysadmin user which we have already owned.
 
 Then I read flag by appending my command in the 00-header file and re-logged in using SSH and got root.txt also
 
 
-![Desktop View]({{ "/assets/img/traceback-root.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/traceback-root.png" | relative_url }})
 
-![Desktop View]({{ "/assets/img/traceback-root-1.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/traceback-root-1.png" | relative_url }})
 
 
 Thanks for reading this writeup and all suggestions are welcome.

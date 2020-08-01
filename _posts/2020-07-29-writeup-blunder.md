@@ -9,7 +9,7 @@ tags: [hackthebox, htb, blunder]
 <h2 data-toc-skip>Writeup of Blunder Machine (HackTheBox)</h2>
 
 
-![Desktop View]({{ "/assets/img/blunder-main.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/blunder-main.png" | relative_url }})
 
 Blunder machine released on 30 May 2020 on HackTheBox platform and created by [egotisticalSW](https://www.hackthebox.eu/home/users/profile/94858).
 It's nice machine which hosted CMS named Bludit. So let's move forward and p4wn this awesome box.
@@ -20,7 +20,7 @@ It's nice machine which hosted CMS named Bludit. So let's move forward and p4wn 
 
 #### sudo nmap -sV -sC -T4 -p- 10.10.10.191
 
-![Desktop View]({{ "/assets/img/blunder-nmap.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/blunder-nmap.png" | relative_url }})
 
 We used -sC for Default Script, -sV Service Version Scan, -p- for All Ports and -T4 for Timing. As you can see there are two ports open that is port 21 and 80. Port 21 was ftp but closed and port 80 has hosted webserver which has Apache httpd 2.4.41 also the OS was Ubuntu, so we moved towards port 80 for further enumeration.
 
@@ -28,20 +28,20 @@ We used -sC for Default Script, -sV Service Version Scan, -p- for All Ports and 
 
 After opening the the website in browser we found that it was using Bludit CMS.
 
-![Desktop View]({{ "/assets/img/blunder-cms.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/blunder-cms.png" | relative_url }})
 
 Continuing to enumeration we started fuzzing the web directory using ffuf tool.
 
 
-![Desktop View]({{ "/assets/img/blunder-ffuf.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/blunder-ffuf.png" | relative_url }})
 
 After doing some web fuzzing, We found admin panel of Bludit CMS hosted on url <http://10.10.10.191/admin/>
 
-![Desktop View]({{ "/assets/img/blunder-cms-admin.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/blunder-cms-admin.png" | relative_url }})
 
 As we don't know the username and password of this admin panel, We continued fuzzing on website using ffuf and some common extensions like php, txt etc.
 
-![Desktop View]({{ "/assets/img/blunder-ffuf-1.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/blunder-ffuf-1.png" | relative_url }})
 
 After some fuzzing we got one todo.txt file hosted on webserver which has one note "Inform fergus that the new blog needs images - PENDING"
 
@@ -54,7 +54,7 @@ In our case, We used this tool on webpase and generated wordlist.
 
 cewl http://10.10.10.191/
 
-![Desktop View]({{ "/assets/img/blunder-cewl.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/blunder-cewl.png" | relative_url }})
 
 Nice, CeWl generated more than 300 passwords.
 Now we have username and wordlist of passwords, Let's move forward.
@@ -113,16 +113,16 @@ for password in wordlist:
 
 In above code, I used pass.txt file as wordlist and username as "fergus"
 
-![Desktop View]({{ "/assets/img/blunder-bruteforce-1.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/blunder-bruteforce-1.png" | relative_url }})
 
 After bruteforce, We got the password of user "fergus" as "RolandDeschain"
 
-![Desktop View]({{ "/assets/img/blunder-bruteforce-2.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/blunder-bruteforce-2.png" | relative_url }})
 
 Now we have both username and password.
 Let's login with username as “fergus” and password as  “RolandDeschain”
 
-![Desktop View]({{ "/assets/img/blunder-bludit-login.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/blunder-bludit-login.png" | relative_url }})
 
 We successfully logged in into Bludit CMS.
 After some Google, I found that there is file upload vulnerability available for Bludit CMS and also there is metasploit module available for the same.
@@ -133,38 +133,38 @@ Lets fire up metasploit and use the above exploit.
 
 We need to set some required data (option) for this exploit.
 
-![Desktop View]({{ "/assets/img/blunder-metasploit.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/blunder-metasploit.png" | relative_url }})
 
 Here I set BLUIDITPASS, BLUIDITUSER, RHOSTS, LHOST options respectively to exploit the vulnerability.
 
 After setting up options I ran exploit command to run the exploit and voila!!!, We got initial shell..
 
-![Desktop View]({{ "/assets/img/blunder-metasploit-1.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/blunder-metasploit-1.png" | relative_url }})
 
 Now let's start enumeration to get user.
 
 While doing enumeration, I checked some documentation of Bludit CMS in which I found that the CMS had database folder.
 
-![Desktop View]({{ "/assets/img/blunder-cms-structure.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/blunder-cms-structure.png" | relative_url }})
 
 In this database folder I got one PHP file named users.php which contains password hash of another user “hugo”
 
-![Desktop View]({{ "/assets/img/blunder-password-hash.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/blunder-password-hash.png" | relative_url }})
 
 After using online password cracker, I got "Password120" as password for user “hugo”
 
-![Desktop View]({{ "/assets/img/blunder-password-hash-1.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/blunder-password-hash-1.png" | relative_url }})
 
 After login using above password I was able to get user successfully.
 
-![Desktop View]({{ "/assets/img/blunder-user.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/blunder-user.png" | relative_url }})
 
 Here we got user.txt.
 Now it's time for Privilage Escalation.
 
 I ran sudo -l to list out what is allowed to run as sudo without password
 
-![Desktop View]({{ "/assets/img/blunder-privesc.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/blunder-privesc.png" | relative_url }})
 
 Here the user was allowed to run /bin/bash without password.
 
@@ -174,7 +174,7 @@ The above command will trigger -1 user which is not there so we will get a root 
 
 You'll get more information about this PrivEsc vulnerability [here](https://www.sudo.ws/alerts/minus_1_uid.html).
 
-![Desktop View]({{ "/assets/img/blunder-root.png" | relative_url }})
+![Desktop View]({{ "/assets/img/htb-machines/blunder-root.png" | relative_url }})
 
 And here we rooted Blunder successfully.
 

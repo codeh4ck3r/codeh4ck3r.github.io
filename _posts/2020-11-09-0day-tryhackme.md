@@ -6,10 +6,14 @@ categories: [TryHackMe]
 tags: [tryhackme, 0day, shellshock]
 ---
 
-<h3 data-toc-skip>0day - TryHackMe</h3>
-
+<h3><strong><span style="color:#ff5555">0day - TryHackMe</span></strong></h3>
+---
 
 ![Desktop View]({{ "/assets/img/thm-machines/0day-main.png" | relative_url }})
+
+<strong><span style="color:#ff5555">Introduction</span></strong>
+
+---
 
 Hey All, Hope you all are safe and doing well. Today I'm gonna do 0day machine by Ryan Montgomery on TryHackMe.It's really good machine on ShellShock Vulnerability which is available in cgi-bin directory with test.cgi file name and the Privilage Escalation is also awesome because of the old kernel version.
 
@@ -25,10 +29,18 @@ Now let's go for practical to understand and hack this machine.
 
 ---
 
+<strong><span style="color:#ff5555">Port & Service Enumeration</span></strong>
+
+---
+
 First starting with Nmap, I found two open ports that is Port 22 and Port 80. Here Port 22 is running OpenSSH 6.6.1p1 service and Port 80 is running Apache - 2.4.7 service on Ubuntu Operating System.
 
 ![Desktop View]({{ "/assets/img/thm-machines/0day-nmap.png" | relative_url }})
+---
 
+<strong><span style="color:#ff5555">Web Enumeration</span></strong>
+
+---
 For further enumeration, I moved to Port 80 to check which kind of web application is running.
 
 ![Desktop View]({{ "/assets/img/thm-machines/0day-website.png" | relative_url }})
@@ -51,6 +63,12 @@ Next, I saved that key and tried to login into server with different usernames s
 ![Desktop View]({{ "/assets/img/thm-machines/0day-ssh-error.png" | relative_url }})
 
 At last I moved further to enumerate other directories of web application.
+
+---
+
+<strong><span style="color:#ff5555">Initial Shell</span></strong>
+
+---
 
 But before that I checked Nikto's result and it gave me a lot of hints.
 
@@ -77,6 +95,12 @@ After going to **/home** directory I got **ryan** user and also I was able to re
 
 ![Desktop View]({{ "/assets/img/thm-machines/0day-user-flag.png" | relative_url }})
 
+---
+
+<strong><span style="color:#ff5555">Privilege Escalation: Root</span></strong>
+
+---
+
 After running **LinPeas.sh** for Privilege Escalation, I got vulnerable Linux Kernel version.
 
 ![Desktop View]({{ "/assets/img/thm-machines/0day-linpeas.png" | relative_url }})
@@ -91,4 +115,4 @@ After running the exploit, I got the root!!!
 
 If you want detailed explanation about this Privilage Escalation vulnerability then go [here](https://www.halfdog.net/Security/2015/UserNamespaceOverlayfsSetuidWriteExec/)
 
-Thanks for reading this writeup and all suggestions are welcome.
+**Thanks for reading this writeup and all suggestions are welcome.**

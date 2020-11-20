@@ -6,10 +6,17 @@ categories: [VulnNodeApp]
 tags: [vulnnodeapp, nodejs-pentesting, web-application-pentesting]
 ---
 
-<h3 data-toc-skip>VulnNodeApp</h3>
+<h3><strong><span style="color:#ff5555">VulnNodeApp</span></strong></h3>
 
+---
 
 ![Desktop View]({{ "/assets/img/vulnnodeapp/main.png" | relative_url }})
+
+---
+
+<strong><span style="color:#ff5555">Introduction</span></strong>
+
+---
 
 Today I am going to do [@4auvar](https://twitter.com/4auvar)'s Vulnerable Node Application (VulnNodeApp).
 [Here](https://github.com/4auvar/VulnNodeApp) you can get the VulnNodeApp which you can install on local environment (Ubuntu-VirtualBox) and do Pentesting.
@@ -21,7 +28,9 @@ So let's start Pentesting this awesome application.
 
 ---
 
-<h3 data-toc-skip>SQL Injection Module</h3>
+<strong><span style="color:#ff5555">Error Based SQL Injection</span></strong>
+
+---
 
 The first vulnerability category in this vulnerable web application is SQL Injection. [@4auvar](https://twitter.com/4auvar) covered multiple types of SQL Injections here. In the end he also gave one exercise to solve.
 
@@ -46,6 +55,12 @@ By this error we can guess that this is error based SQLi. And as you can see the
 
 ![Desktop View]({{ "/assets/img/vulnnodeapp/sqlmap-1.png" | relative_url }})
 ![Desktop View]({{ "/assets/img/vulnnodeapp/sqlmap-2.png" | relative_url }})
+
+---
+
+<strong><span style="color:#ff5555">Source Code Analysis</span></strong>
+
+---
 
 Now lets take a look at the vulnerable code of this web application.
 
@@ -78,4 +93,5 @@ Now here is the main part comes, The [usersModel.js](https://github.com/4auvar/V
 ![Desktop View]({{ "/assets/img/vulnnodeapp/UsersModel-class.png" | relative_url }})
 
 Here we have completed Error Based SQLi vulnerability. Stay tuned for next part of this VulnNodeApp.
-Thanks for reading this writeup and all suggestions are welcome.
+
+**Thanks for reading this writeup and all suggestions are welcome.**

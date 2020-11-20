@@ -6,31 +6,44 @@ categories: [Writeup, HackTheBox]
 tags: [hackthebox, htb, blunder]
 ---
 
-<h2 data-toc-skip>Writeup of Blunder Machine (HackTheBox)</h2>
-
+<h3><strong><span style="color:#ff5555">Blunder - HackTheBox</span></strong></h3>
+---
 
 ![Desktop View]({{ "/assets/img/htb-machines/blunder-main.png" | relative_url }})
 
-Blunder machine released on 30 May 2020 on HackTheBox platform and created by [egotisticalSW](https://www.hackthebox.eu/home/users/profile/94858).
-It's nice machine which hosted CMS named Bludit. So let's move forward and p4wn this awesome box.
+---
+
+<strong><span style="color:#ff5555">Introduction</span></strong>
 
 ---
 
-<h3 data-toc-skip>Starting with Nmap</h3>
+Blunder machine released on 30 May 2020 on HackTheBox platform and created by [egotisticalSW](https://www.hackthebox.eu/home/users/profile/94858).
+It's nice machine which hosted CMS named Bludit. So let's move forward and p4wn this awesome box.
+**This blog is meant for educational purposes only.**
 
-#### sudo nmap -sV -sC -T4 -p- 10.10.10.191
+---
+
+<strong><span style="color:#ff5555">Port & Service Enumeration</span></strong>
+
+---
+
+<p><code class="language-plaintext highlighter-rouge">root@kali:~sudo nmap -sV -sC -T4 10.10.10.191</code></p>
 
 ![Desktop View]({{ "/assets/img/htb-machines/blunder-nmap.png" | relative_url }})
 
 We used -sC for Default Script, -sV Service Version Scan, -p- for All Ports and -T4 for Timing. As you can see there are two ports open that is port 21 and 80. Port 21 was ftp but closed and port 80 has hosted webserver which has Apache httpd 2.4.41 also the OS was Ubuntu, so we moved towards port 80 for further enumeration.
 
+---
 
+<strong><span style="color:#ff5555">Web Enumeration</span></strong>
+
+---
 
 After opening the the website in browser we found that it was using Bludit CMS.
 
 ![Desktop View]({{ "/assets/img/htb-machines/blunder-cms.png" | relative_url }})
 
-Continuing to enumeration we started fuzzing the web directory using ffuf tool.
+Continuing to enumeration we started fuzzing the web directory using Ffuf tool.
 
 
 ![Desktop View]({{ "/assets/img/htb-machines/blunder-ffuf.png" | relative_url }})
@@ -39,7 +52,7 @@ After doing some web fuzzing, We found admin panel of Bludit CMS hosted on url <
 
 ![Desktop View]({{ "/assets/img/htb-machines/blunder-cms-admin.png" | relative_url }})
 
-As we don't know the username and password of this admin panel, We continued fuzzing on website using ffuf and some common extensions like php, txt etc.
+As we don't know the username and password of this admin panel, We continued fuzzing on website using Ffuf and some common extensions like php, txt etc.
 
 ![Desktop View]({{ "/assets/img/htb-machines/blunder-ffuf-1.png" | relative_url }})
 
@@ -125,6 +138,13 @@ Let's login with username as “fergus” and password as  “RolandDeschain”
 ![Desktop View]({{ "/assets/img/htb-machines/blunder-bludit-login.png" | relative_url }})
 
 We successfully logged in into Bludit CMS.
+
+---
+
+<strong><span style="color:#ff5555">Initial Shell</span></strong>
+
+---
+
 After some Google, I found that there is file upload vulnerability available for Bludit CMS and also there is metasploit module available for the same.
 
 Name of the Metasploit module : linux/http/bludit_upload_images_exec
@@ -140,6 +160,12 @@ Here I set BLUIDITPASS, BLUIDITUSER, RHOSTS, LHOST options respectively to explo
 After setting up options I ran exploit command to run the exploit and voila!!!, We got initial shell..
 
 ![Desktop View]({{ "/assets/img/htb-machines/blunder-metasploit-1.png" | relative_url }})
+
+---
+
+<strong><span style="color:#ff5555">Privilege Escalation: User</span></strong>
+
+---
 
 Now let's start enumeration to get user.
 
@@ -160,7 +186,14 @@ After login using above password I was able to get user successfully.
 ![Desktop View]({{ "/assets/img/htb-machines/blunder-user.png" | relative_url }})
 
 Here we got user.txt.
-Now it's time for Privilage Escalation.
+
+---
+
+<strong><span style="color:#ff5555">Privilege Escalation: Root</span></strong>
+
+---
+
+Now it's time for root.
 
 I ran sudo -l to list out what is allowed to run as sudo without password
 
@@ -178,4 +211,4 @@ You'll get more information about this PrivEsc vulnerability [here](https://www.
 
 And here we rooted Blunder successfully.
 
-Thanks for reading this writeup and all suggestions are welcome.
+**Thanks for reading this writeup and all suggestions are welcome.**

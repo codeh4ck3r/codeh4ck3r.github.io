@@ -1,9 +1,9 @@
 ---
-title: 0ld is g0ld Writeup - Challenge
+title: 0ld is g0ld Challenge - Writeup
 author: Sujit Suryawanshi
 date: 2020-07-30 14:10:00 +0800
-categories: [Writeup, HackTheBox]
-tags: [hackthebox, htb, 0ld is g0ld, challenge]
+categories: [HackTheBox]
+tags: [hackthebox, htb, 0ld is g0ld]
 ---
 
 <h2 data-toc-skip>Writeup of 0ld is g0ld Challenge</h2>

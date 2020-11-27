@@ -1,8 +1,8 @@
 ---
-title: Traceback Writeup - Machine
+title: Traceback Machine - Writeup
 author: Sujit Suryawanshi
 date: 2020-08-01 14:10:00 +0800
-categories: [Writeup, HackTheBox]
+categories: [HackTheBox]
 tags: [hackthebox, htb, traceback]
 ---
 

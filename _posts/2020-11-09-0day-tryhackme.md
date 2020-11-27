@@ -1,9 +1,9 @@
 ---
-title: 0day - TryHackMe
+title: 0day Machine - Writeup
 author: Sujit Suryawanshi
 date: 2020-11-09 15:10:00 +0800
 categories: [TryHackMe]
-tags: [tryhackme, 0day, shellshock]
+tags: [tryhackme, thm, 0day]
 ---
 
 <h3><strong><span style="color:#ff5555">0day - TryHackMe</span></strong></h3>

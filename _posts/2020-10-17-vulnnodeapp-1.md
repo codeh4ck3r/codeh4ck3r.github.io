@@ -2,8 +2,8 @@
 title: VulnNodeApp - Error Based SQLi
 author: Sujit Suryawanshi
 date: 2020-10-17 15:10:00 +0800
-categories: [VulnNodeApp]
-tags: [vulnnodeapp, nodejs-pentesting, web-application-pentesting]
+categories: [Web Application Pentesting, VulnNodeApp]
+tags: [vulnnodeapp, nodejs-pentesting]
 ---
 
 <h3><strong><span style="color:#ff5555">VulnNodeApp</span></strong></h3>

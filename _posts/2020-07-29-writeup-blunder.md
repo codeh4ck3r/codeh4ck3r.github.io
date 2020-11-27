@@ -1,8 +1,8 @@
 ---
-title: Blunder Writeup - Machine
+title: Blunder Machine - Writeup
 author: Sujit Suryawanshi
 date: 2020-07-29 14:10:00 +0800
-categories: [Writeup, HackTheBox]
+categories: [HackTheBox]
 tags: [hackthebox, htb, blunder]
 ---
 

@@ -20,7 +20,7 @@ And then we are going to login as root.
 
 Let's start now,
 
-**This blog is meant for educational purposes only.**
+<span style="color:#ff5555">This blog is meant for educational purposes only.</span>
 
 ---
 
@@ -59,4 +59,4 @@ After replacing the old hash with new one, Let's login with root user.
 
 Here we got root of this system.
 
-**Thanks for reading this writeup and all suggestions are welcome.**
+<span style="color:#ff5555">**Thanks for reading this writeup and all suggestions are welcome.**</span>

@@ -6,9 +6,6 @@ categories: [HackTheBox]
 tags: [hackthebox, htb, blunder]
 ---
 
-<h3><strong><span style="color:#ff5555">Blunder - HackTheBox</span></strong></h3>
----
-
 ![Desktop View]({{ "/assets/img/htb-machines/blunder-main.png" | relative_url }})
 
 ---
@@ -19,7 +16,8 @@ tags: [hackthebox, htb, blunder]
 
 Blunder machine released on 30 May 2020 on HackTheBox platform and created by [egotisticalSW](https://www.hackthebox.eu/home/users/profile/94858).
 It's nice machine which hosted CMS named Bludit. So let's move forward and p4wn this awesome box.
-**This blog is meant for educational purposes only.**
+
+<span style="color:#ff5555">This blog is meant for educational purposes only.</span>
 
 ---
 
@@ -211,4 +209,4 @@ You'll get more information about this PrivEsc vulnerability [here](https://www.
 
 And here we rooted Blunder successfully.
 
-**Thanks for reading this writeup and all suggestions are welcome.**
+<span style="color:#ff5555">**Thanks for reading this writeup and all suggestions are welcome.**</span>

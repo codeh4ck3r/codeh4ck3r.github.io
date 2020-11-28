@@ -6,10 +6,6 @@ categories: [HackTheBox]
 tags: [hackthebox, htb, traceback]
 ---
 
-<h3><strong><span style="color:#ff5555">Traceback - HackTheBox</span></strong></h3>
-
----
-
 ![Desktop View]({{ "/assets/img/htb-machines/traceback-main.png" | relative_url }})
 
 ---
@@ -25,7 +21,7 @@ So the backdoor shell was the way to get initial shell and then need to get user
 The box was using UpdateMotd which was running one custom script after a particular time. And the user had access to write into 00-header file which was executing.
 Se lets move and Pwn this box.
 
-**This blog is meant for educational purposes only.**
+<span style="color:#ff5555">This blog is meant for educational purposes only.</span>
 
 ---
 
@@ -144,4 +140,4 @@ Then I read flag by appending my command in the 00-header file and re-logged in 
 ![Desktop View]({{ "/assets/img/htb-machines/traceback-root-1.png" | relative_url }})
 
 
-**Thanks for reading this writeup and all suggestions are welcome.**
+<span style="color:#ff5555">**Thanks for reading this writeup and all suggestions are welcome.**</span>

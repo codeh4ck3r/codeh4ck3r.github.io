@@ -6,10 +6,9 @@ categories: [TryHackMe]
 tags: [tryhackme, thm, 0day]
 ---
 
-<h3><strong><span style="color:#ff5555">0day - TryHackMe</span></strong></h3>
----
-
 ![Desktop View]({{ "/assets/img/thm-machines/0day-main.png" | relative_url }})
+
+---
 
 <strong><span style="color:#ff5555">Introduction</span></strong>
 
@@ -25,7 +24,7 @@ The ShellShock Vulnerability, discovered by Stephane Chazelas was assigned the C
 
 Now let's go for practical to understand and hack this machine.
 
-**This blog is meant for educational purposes only.**
+<span style="color:#ff5555">This blog is meant for educational purposes only.</span>
 
 ---
 
@@ -115,4 +114,4 @@ After running the exploit, I got the root!!!
 
 If you want detailed explanation about this Privilage Escalation vulnerability then go [here](https://www.halfdog.net/Security/2015/UserNamespaceOverlayfsSetuidWriteExec/)
 
-**Thanks for reading this writeup and all suggestions are welcome.**
+<span style="color:#ff5555">**Thanks for reading this writeup and all suggestions are welcome.**</span>

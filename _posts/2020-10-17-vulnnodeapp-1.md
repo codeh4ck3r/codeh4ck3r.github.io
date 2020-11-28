@@ -6,10 +6,6 @@ categories: [Web Application Pentesting, VulnNodeApp]
 tags: [vulnnodeapp, nodejs-pentesting]
 ---
 
-<h3><strong><span style="color:#ff5555">VulnNodeApp</span></strong></h3>
-
----
-
 ![Desktop View]({{ "/assets/img/vulnnodeapp/main.png" | relative_url }})
 
 ---
@@ -24,7 +20,7 @@ We are going to analyze the backend code for better understanding of vulnerabili
 
 So let's start Pentesting this awesome application.
 
-**This blog is meant for educational purposes only.**
+<span style="color:#ff5555">This blog is meant for educational purposes only.</span>
 
 ---
 
@@ -94,4 +90,4 @@ Now here is the main part comes, The [usersModel.js](https://github.com/4auvar/V
 
 Here we have completed Error Based SQLi vulnerability. Stay tuned for next part of this VulnNodeApp.
 
-**Thanks for reading this writeup and all suggestions are welcome.**
+<span style="color:#ff5555">**Thanks for reading this writeup and all suggestions are welcome.**</span>

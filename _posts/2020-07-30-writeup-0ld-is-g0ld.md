@@ -6,11 +6,13 @@ categories: [HackTheBox]
 tags: [hackthebox, htb, 0ld is g0ld]
 ---
 
-<h2 data-toc-skip>Writeup of 0ld is g0ld Challenge</h2>
-
-
 ![Desktop View]({{ "/assets/img/htb-challenges/old-is-gold-main.png" | relative_url }})
 
+---
+
+<strong><span style="color:#ff5555">Solution</span></strong>
+
+---
 
 In this blog I'm gonna share my writeup on one awesome challenge named 0ld is g0ld.
 The hint that was given with this challenge is "Old algorithms are not a waste, but are really precious".
@@ -41,4 +43,4 @@ I copied that string and pasted on Google, so the first website came as "Morse C
 
 ![Desktop View]({{ "/assets/img/htb-challenges/old-is-gold-pdf-morse-code.png" | relative_url }})
 
-Thanks for reading this writeup and all suggestions are welcome.
+<span style="color:#ff5555">**Thanks for reading this writeup and all suggestions are welcome.**</span>

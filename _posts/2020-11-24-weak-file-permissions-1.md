@@ -19,7 +19,7 @@ Sometimes the system administrators give read permission of /etc/shadow file to 
 
 Let's start now,
 
-**This blog is meant for educational purposes only.**
+<span style="color:#ff5555">This blog is meant for educational purposes only.</span>
 
 ---
 
@@ -66,4 +66,4 @@ Now lets use this password and login into root.
 
 Here we got root of this system.
 
-**Thanks for reading this writeup and all suggestions are welcome.**
+<span style="color:#ff5555">**Thanks for reading this writeup and all suggestions are welcome.**</span>

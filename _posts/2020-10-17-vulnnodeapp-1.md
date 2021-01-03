@@ -76,7 +76,11 @@ In user.js file we got **errorBasedSqli** function which was passing **id** para
 
 ![Desktop View]({{ "/assets/img/vulnnodeapp/errorBasedSqli-function.png" | relative_url }})
 
-The **getUser** function was passing the value of **id** parameter to function called **findUserById** which is available in [/controllers/usersController.js](https://github.com/4auvar/VulnNodeApp/blob/master/controllers/usersController.js) file.
+The **getUser** function was passing the value of **id** parameter to function called **findUserById** which is available in [/controllers/usersController.js](https://github.com/4auvar/VulnNodeApp/blob/master/controllers/usersController.js) file. This is where the SQLi Error is getting shown to user because as you can see whatever the error is getting, The **getUser** function is sending that error to user with below code.
+```
+catch((err) => {
+                return res.send(err);
+```
 
 ![Desktop View]({{ "/assets/img/vulnnodeapp/getUser-function.png" | relative_url }})
 
